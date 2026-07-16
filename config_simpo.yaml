@@ -1,0 +1,45 @@
+# ========================
+# Model Arguments
+# ========================
+model_name_or_path: "/root/autodl-tmp/model/PsyDT_SFT_Qwen2.5/checkpoint-355"
+torch_dtype: bfloat16
+trust_remote_code: true
+attn_implementation: "flash_attention_2"
+
+# ========================
+# Data Arguments
+# ========================
+dataset_mixer:
+  "./local_simpo_dataset": 1.0
+dataset_splits:
+  - train
+  - test
+preprocessing_num_workers: 8
+truncation_side: "left"
+auto_insert_empty_system_msg: false
+
+# ========================
+# SimPO & Trainer Arguments
+# ========================
+bf16: true
+beta: 2.0          
+gamma_beta_ratio: 0.5   
+sft_weight: 0.0          
+loss_type: "sigmoid"
+label_smoothing: 0.0  
+
+output_dir: "./simpo_model_output"
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+eval_strategy: "steps"   
+eval_steps: 100
+save_strategy: "steps"
+save_steps: 100
+logging_steps: 10
+learning_rate: 5.0e-7  
+warmup_ratio: 0.1
+lr_scheduler_type: "cosine"
+max_length: 2048        
+max_prompt_length: 1024 
+gradient_checkpointing: true
+report_to: "wandb"     

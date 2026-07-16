@@ -1,0 +1,30 @@
+# 忽略数据集目录
+local_simpo_dataset/
+
+# 忽略 wheel 包
+*.whl
+
+# 忽略 Python 缓存
+__pycache__/
+*.py[cod]
+*.so
+.Python
+
+# 忽略 Jupyter Notebook
+.ipynb_checkpoints/
+
+# 忽略 IDE 配置
+.vscode/
+.idea/
+
+# 忽略模型权重和 checkpoint
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+
+# 忽略输出目录
+output/
+logs/
+runs/
