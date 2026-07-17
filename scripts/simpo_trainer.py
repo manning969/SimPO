@@ -102,7 +102,7 @@ class SimPOTrainer(Trainer):
             model_init_kwargs["torch_dtype"] = (
                 model_init_kwargs["torch_dtype"]
                 if model_init_kwargs["torch_dtype"] in ["auto", None]
-                else getattr(torch, model_init_kwargs["torch_dtype"])
+                else (getattr(torch, model_init_kwargs["torch_dtype"]) if isinstance(model_init_kwargs.get("torch_dtype"), str) else model_init_kwargs.get("torch_dtype"))
             )
 
         if isinstance(model, str):
